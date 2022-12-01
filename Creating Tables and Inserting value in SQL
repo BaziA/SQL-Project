@@ -22,12 +22,22 @@ INSERT INTO `Customer` (`CustomerID`, `FirstName`, `LastName`, `PhoneNumber`, `S
 (5, 'David', 'Nowitzki', '8084327444', '1993 Doriana Drive', 'San Diego', 'CA', '92139'),
 (6, 'Tiffany', 'Robinson', '6198828311', '8332 Kurtz Drive', 'San DIego', 'CA', '92199')
 
-##Table structure for table `InvoiceProduct`
+##Table structure for table `Managers`
 
-CREATE TABLE `InvoiceProduct` (
-  `InvoiceProductID` int(11) NOT NULL,
-  `ProductID` int(11) DEFAULT NULL,
-  `InvoiceID` int(11) DEFAULT NULL
+CREATE TABLE `Managers` (
+  `ManagerID` int(11) NOT NULL,
+  `ManagerName` varchar(100) DEFAULT NULL,
+  `ManagerEmail` varchar(200) DEFAULT NULL,
+  `ManagerPhone` char(10) DEFAULT NULL
 )
 
+
+##Dumping data for table `Managers`
+
+
+INSERT INTO `Managers` (`ManagerID`, `ManagerName`, `ManagerEmail`, `ManagerPhone`) VALUES
+(132, 'Juan Sanchez', 'JuanS@Pizza.Com', '6197772322'),
+(142, 'Canon John', 'CanonJ@Pizza.com', '6197328822'),
+(144, 'William Robertson', 'WillRS@Pizza.Com', '6127372322'),
+(162, 'Felix Rosarito', 'FelixS@Pizza.Com', '6397772992');
 
