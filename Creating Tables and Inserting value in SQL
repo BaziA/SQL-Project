@@ -41,3 +41,176 @@ INSERT INTO `Managers` (`ManagerID`, `ManagerName`, `ManagerEmail`, `ManagerPhon
 (144, 'William Robertson', 'WillRS@Pizza.Com', '6127372322'),
 (162, 'Felix Rosarito', 'FelixS@Pizza.Com', '6397772992');
 
+##Table structure for table `OrderInvoice`
+--
+
+CREATE TABLE `OrderInvoice` (
+  `InvoiceID` int(11) NOT NULL,
+  `OrderDate` date DEFAULT NULL,
+  `CustomerID` int(11) DEFAULT NULL,
+  `StoreID` int(11) DEFAULT NULL,
+  `InvoicePizzaID` int(11) DEFAULT NULL,
+  `ServiceID` int(11) DEFAULT NULL,
+  `PaymentID` int(11) DEFAULT NULL,
+  `Total_Price` float DEFAULT NULL
+) 
+
+##Dumping data for table `OrderInvoice`
+
+
+INSERT INTO `OrderInvoice` (`InvoiceID`, `OrderDate`, `CustomerID`, `StoreID`, `InvoicePizzaID`, `ServiceID`, `PaymentID`, `Total_Price`) VALUES
+(21, '2021-12-03', 1, 100, 1, 1, 111, 48.22),
+(22, '2021-12-00', 2, 211, 2, 2, 112, 68.22),
+(23, '2021-11-29', 3, 999, 3, 5, 222, 58.98),
+(24, '2021-12-03', 4, 777, 4, 5, 333, 50.99),
+(25, '2021-12-02', 5, 999, 5, 4, 223, 72.22),
+(26, '2021-12-04', 6, 211, 6, 2, 113, 91.22);
+
+##Table structure for table `PaymentInfo`
+--
+
+CREATE TABLE `PaymentInfo` (
+  `PaymentID` int(11) NOT NULL,
+  `CustomerID` int(11) DEFAULT NULL,
+  `Card_Type` varchar(20) DEFAULT NULL,
+  `Card_Number` varchar(20) DEFAULT NULL
+) 
+
+##Dumping data for table `Paymentinfo`
+
+
+INSERT INTO `PaymentInfo` (`PaymentID`, `CustomerID`, `Card_Type`, `Card_Number`) VALUES
+(111, 1, 'Visa', '1234567891013140'),
+(112, 2, 'Visa', '4321567891013140'),
+(113, 6, 'Visa', '2222567891018888'),
+(222, 3, 'Mastercard', '2134567891013140'),
+(223, 5, 'Mastercaed', '0022567891017442'),
+(333, 4, 'American Express', '543356789101344');
+
+##Table structure for table `Pizza`
+--
+
+CREATE TABLE `Pizza` (
+  `PizzaID` int(11) NOT NULL,
+  `ProductID` int(11) DEFAULT NULL,
+  `ToppingID` int(11) DEFAULT NULL
+)
+
+
+##Table structure for table `PizzaToppings`
+
+
+CREATE TABLE `PizzaToppings` (
+  `ToppingID` int(11) NOT NULL,
+  `TopppingName` varchar(100) DEFAULT NULL,
+  `Price` float DEFAULT NULL
+) 
+
+
+##Dumping data for table `PizzaToppings`
+
+
+INSERT INTO `PizzaToppings` (`ToppingID`, `TopppingName`, `Price`) VALUES
+(1, 'Pepperoni', 2.99),
+(2, 'Chicken', 3.99),
+(3, 'Ham', 1.99),
+(4, 'Beef', 3.5),
+(5, 'Pineapple', 1.99),
+(6, 'Pepperoni', 2.99),
+(7, 'Mushrooms', 1.5),
+(8, 'Olives', 1.5),
+(9, 'Banana Pepper', 1),
+(10, 'Onions', 1);
+
+##Table structure for table `Product`
+
+
+CREATE TABLE `Product` (
+  `ProductID` int(11) NOT NULL,
+  `ProductName` varchar(100) DEFAULT NULL,
+  `Price` float DEFAULT NULL
+)
+
+##Dumping data for table `Product`
+
+INSERT INTO `Product` (`ProductID`, `ProductName`, `Price`) VALUES
+(100, 'Cheese Pizza', 10.99),
+(101, '6 Piece Wings', 7.99),
+(102, '10 Piece Wings', 9.99),
+(103, 'Cheese Pizza', 10.99),
+(104, 'Chicken Alfredo', 11.99),
+(105, 'Cheese Pizza', 10.99),
+(106, 'Chocolate Cake', 6.99);
+
+##Table structure for table `Reviews`
+
+
+CREATE TABLE `Reviews` (
+  `ReviewID` int(11) NOT NULL,
+  `CustomerID` int(11) DEFAULT NULL,
+  `ServiceID` int(11) DEFAULT NULL,
+  `Review` varchar(1000) DEFAULT NULL
+) 
+
+##Dumping data for table `Reviews`
+
+
+INSERT INTO `Reviews` (`ReviewID`, `CustomerID`, `ServiceID`, `Review`) VALUES
+(535, 5, 3, 'I always order from this place, their food is Amazing.'),
+(555, 1, 1, ' I placed my order at 8:00pm, and did not recieve it until 9:45pm, I would not recommend Ubereats delivery service'),
+(600, 3, 4, ' Placed my order with Grubhub, food arrived delicious and fresh. Highly recommend'),
+(610, 6, 2, ' I passed by one of the shops as I was driving to work, I decided to stop by to grab some lunch, the foods was super delicious and affodable. Staff is Amazing and very helpful'),
+(700, 4, 5, ' Their Pizza and Wings are to die for');
+
+##Table structure for table `ServiceType`
+
+
+CREATE TABLE `ServiceType` (
+  `ServiceID` int(11) NOT NULL,
+  `ServiceName` varchar(100) DEFAULT NULL
+) 
+
+##Dumping data for table `ServiceType`
+
+INSERT INTO `ServiceType` (`ServiceID`, `ServiceName`) VALUES
+(1, 'UberEats'),
+(2, 'WalkIn'),
+(3, 'Delivery'),
+(4, 'Grubhub'),
+(5, 'PostMates');
+
+##Table structure for table `Store`
+
+CREATE TABLE `Store` (
+  `StoreID` int(11) NOT NULL,
+  `StoreName` varchar(100) NOT NULL,
+  `City` varchar(100) DEFAULT NULL,
+  `State` char(2) DEFAULT NULL,
+  `ManageriD` int(11) DEFAULT NULL
+)
+
+##Dumping data for table `Store`
+--
+
+INSERT INTO `Store` (`StoreID`, `StoreName`, `City`, `State`, `ManageriD`) VALUES
+(100, 'Tasty Pizza Shop', 'San Diego', 'CA', 132),
+(211, 'Frisky Pizza Shop', 'La Mesa', 'CA', 144),
+(332, 'Dave\'s Pizza Shop', 'La Mesa', 'CA', 142),
+(777, 'College Pizza Shop', 'San Diego', 'CA', 162),
+(883, 'La Jolla Pizza Shop', 'La jolla', 'CA', 132),
+(999, 'La Mesa Pizza Shop', 'La Mesa', 'CA', 144);
+
+##Table structure for table `StoreMgt`
+
+
+CREATE TABLE `StoreMgt` (
+  `StoreMgtID` int(11) NOT NULL,
+  `StoreID` int(11) DEFAULT NULL,
+  `ManagerID` int(11) DEFAULT NULL
+) 
+
+##Dumping data for table `StoreMgt`
+
+INSERT INTO `StoreMgt` (`StoreMgtID`, `StoreID`, `ManagerID`) VALUES
+(1, 100, 132),
+(2, 211, 162);
